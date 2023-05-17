@@ -5,6 +5,12 @@
   "models": {
     "graph": {
       "MyCompany/Contact": {
+        "binaries": [
+          {
+            "attribute": "photos",
+            "cardinality": "MANY"
+          }
+        ],
         "links": [
           {
             "attribute": "_user",
@@ -31,6 +37,7 @@
         "lastName": "string",
         "emails": "{\n    email: string;\n    type: \"PERSONAL\" | \"PROFESSIONAL\";\n  }[]",
         "notes": "string",
+        "photos": "Binaries",
         "_user": "ModelLink<User>",
         "public": "boolean",
         "uuid": "string",
@@ -108,6 +115,10 @@
         "notes": {
           "type": "string",
           "description": "Notes"
+        },
+        "photos": {
+          "$ref": "#/definitions/Binaries",
+          "description": "Photos of the contact"
         }
       },
       "required": [
@@ -120,6 +131,18 @@
       ],
       "description": "Define here a model that can be used along with Store service",
       "$schema": "http://json-schema.org/draft-07/schema#",
+      "definitions": {
+        "Binaries": {
+          "type": "object",
+          "properties": {
+            "upload": {}
+          },
+          "required": [
+            "upload"
+          ],
+          "description": "Define a collection of Binary with a Readonly and the upload method"
+        }
+      },
       "title": "Contact"
     }
   }

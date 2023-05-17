@@ -15,6 +15,14 @@
       "email": {
         "postValidation": true
       }
+    },
+    "Binary": {
+      "type": "FileBinary",
+      "folder": "./binaries",
+      "models": {
+        "*": ["*"]
+      },
+      "url": "/"
     }
   },
   "module": {}
