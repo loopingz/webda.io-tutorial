@@ -4,10 +4,22 @@
   "moddas": {},
   "models": {
     "graph": {
-      "MyCompany/Contact": {}
+      "MyCompany/Contact": {
+        "links": [
+          {
+            "attribute": "_user",
+            "model": "Webda/User",
+            "type": "LINK"
+          }
+        ]
+      }
     },
     "tree": {
-      "MyCompany/Contact": {}
+      "Webda/UuidModel": {
+        "Webda/OwnerModel": {
+          "MyCompany/Contact": {}
+        }
+      }
     },
     "plurals": {},
     "list": {
@@ -19,6 +31,9 @@
         "lastName": "string",
         "emails": "{\n    email: string;\n    type: \"PERSONAL\" | \"PROFESSIONAL\";\n  }[]",
         "notes": "string",
+        "_user": "ModelLink<User>",
+        "public": "boolean",
+        "uuid": "string",
         "___class": "CoreModelDefinition",
         "___type": "string",
         "___types": "string[]",
@@ -46,6 +61,18 @@
           "format": "date-time",
           "description": "Last update date",
           "readOnly": true
+        },
+        "uuid": {
+          "type": "string",
+          "description": "UUID of the object"
+        },
+        "_user": {
+          "type": "string"
+        },
+        "public": {
+          "type": "boolean",
+          "description": "Define if the object is publicly readable",
+          "default": false
         },
         "firstName": {
           "type": "string",
@@ -84,10 +111,12 @@
         }
       },
       "required": [
+        "_user",
+        "emails",
         "firstName",
         "lastName",
-        "emails",
-        "notes"
+        "notes",
+        "uuid"
       ],
       "description": "Define here a model that can be used along with Store service",
       "$schema": "http://json-schema.org/draft-07/schema#",

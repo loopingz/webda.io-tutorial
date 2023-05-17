@@ -6,6 +6,15 @@
     "DomainService": {
       "type": "RESTDomainService",
       "queryMethod": "GET"
+    },
+    "Mailer": {
+      "type": "DebugMailer"
+    },
+    "Authentication": {
+      "type": "Authentication",
+      "email": {
+        "postValidation": true
+      }
     }
   },
   "module": {}
