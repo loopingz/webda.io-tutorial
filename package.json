@@ -1,0 +1,77 @@
+{
+  "name": "webda-contacts",
+  "version": "1.0.0",
+  "description": "My own contact list",
+  "main": "lib/index.js",
+  "type": "module",
+  "scripts": {
+    "build": "webda build",
+    "pretest": "npm run build",
+    "test": "c8 mocha --recursive --exit --timeout=100000 -r ../../node_modules/ts-node/register src/**/*.spec.ts",
+    "test:debug": "mocha --recursive --exit --timeout=100000 -r ../../node_modules/ts-node/register src/**/*.spec.ts",
+    "new-model": "webda init webda:model",
+    "new-service": "webda init webda:service",
+    "lint": "prettier --check src/**/*",
+    "lint:fix": "prettier --write src/**/*",
+    "docs": "typedoc --packages . --out .built-docs",
+    "docs:publish": "yarn docs && gh-pages -t -d .built-docs"
+  },
+  "keywords": [
+    "webda-module"
+  ],
+  "files": [
+    "lib",
+    "webda.module.json",
+    "package.json"
+  ],
+  "dependencies": {
+    "@types/node": "^20.1.7",
+    "@webda/core": "^3.0.1"
+  },
+  "devDependencies": {
+    "@testdeck/mocha": "^0.3.3",
+    "@types/node": "^20.1.7",
+    "@webda/shell": "^3.0.1",
+    "c8": "^7.13.0",
+    "glob": "^10.2.5",
+    "js-beautify": "^1.14.7",
+    "mocha": "^10.2.0",
+    "source-map-support": "^0.5.21",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.0.4",
+    "prettier": "^2.8.8",
+    "prettier-plugin-organize-imports": "^3.2.2",
+    "husky": "^8.0.3",
+    "@commitlint/config-conventional": "^17.6.3",
+    "commitlint": "^17.6.3",
+    "typedoc": "^0.24.7",
+    "typedoc-loopingz-theme": "^1.1.3",
+    "typedoc-plugin-loopingz-pages": "^0.3.1",
+    "typedoc-plugin-mermaid": "^1.10.0",
+    "gh-pages": "^5.0.0"
+  },
+  "c8": {
+    "extends": "@istanbuljs/nyc-config-typescript",
+    "report-dir": "./reports",
+    "reporter": [
+      "html",
+      "lcov",
+      "json"
+    ],
+    "exclude": [
+      "**/*.spec.ts",
+      "test/**/*"
+    ]
+  },
+  "webda": {
+    "namespace": "MyCompany"
+  },
+  "bugs": {
+    "url": "https://github.com/loopingz/webda.io-tutorial/issues"
+  },
+  "homepage": "https://github.com/loopingz/webda.io-tutorial#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/loopingz/webda.io-tutorial.git"
+  }
+}
