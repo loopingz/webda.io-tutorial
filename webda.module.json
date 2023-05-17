@@ -1,5 +1,97 @@
 {
-  "services": {},
-  "models": {},
-  "deployers": {}
+  "beans": {},
+  "deployers": {},
+  "moddas": {},
+  "models": {
+    "graph": {
+      "MyCompany/Contact": {}
+    },
+    "tree": {
+      "MyCompany/Contact": {}
+    },
+    "plurals": {},
+    "list": {
+      "MyCompany/Contact": "lib/models/contact:Contact"
+    },
+    "reflections": {
+      "MyCompany/Contact": {
+        "firstName": "string",
+        "lastName": "string",
+        "emails": "{\n    email: string;\n    type: \"PERSONAL\" | \"PROFESSIONAL\";\n  }[]",
+        "notes": "string",
+        "___class": "CoreModelDefinition",
+        "___type": "string",
+        "___types": "string[]",
+        "___ctx": "OperationContext",
+        "___store": "Store<this>",
+        "___dirty": "Set<string | symbol>",
+        "_creationDate": "Date",
+        "_lastUpdate": "Date",
+        "___deleted": "boolean"
+      }
+    }
+  },
+  "schemas": {
+    "MyCompany/Contact": {
+      "type": "object",
+      "properties": {
+        "_creationDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Creation date",
+          "readOnly": true
+        },
+        "_lastUpdate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Last update date",
+          "readOnly": true
+        },
+        "firstName": {
+          "type": "string",
+          "description": "First name of our contact"
+        },
+        "lastName": {
+          "type": "string",
+          "description": "Last name of our contact"
+        },
+        "emails": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "email": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string",
+                "enum": [
+                  "PERSONAL",
+                  "PROFESSIONAL"
+                ]
+              }
+            },
+            "required": [
+              "email",
+              "type"
+            ]
+          },
+          "description": "Emails collection"
+        },
+        "notes": {
+          "type": "string",
+          "description": "Notes"
+        }
+      },
+      "required": [
+        "firstName",
+        "lastName",
+        "emails",
+        "notes"
+      ],
+      "description": "Define here a model that can be used along with Store service",
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Contact"
+    }
+  }
 }

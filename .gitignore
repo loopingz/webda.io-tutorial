@@ -1,1 +1,5 @@
 node_modules
+.registry
+lib
+.webda-config-schema.json
+.webda-deployment-schema.json
