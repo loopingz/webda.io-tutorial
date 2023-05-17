@@ -24,14 +24,8 @@ export class Contact extends CoreModel {
    * Notes
    */
   notes: string;
-  /**
-   * Call to check if action is available for the current user
-   * @param ctx the context of the request
-   * @param {string} action the type of action
-   * @returns {Promise<void>}
-   * @throws Exception if the action is not available to the user
-   */
   async canAct(ctx, action: string): Promise<string | boolean> {
-    return true;
+    // Require user to be authenticated to do anything on contact
+    return ctx.getCurrentUserId() !== undefined;
   }
 }
